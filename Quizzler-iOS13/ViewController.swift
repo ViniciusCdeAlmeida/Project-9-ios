@@ -30,11 +30,17 @@ class ViewController: UIViewController {
     }
     
     @IBAction func anwserButton(_ sender: UIButton) {
-        questionNumber += 1
-        updateUi()
-        if(questionNumber > questions.count){
-            questionNumber = 0
+        let userAnswer = sender.currentTitle
+        let actualAnswer = questions[questionNumber][1]
+        if(userAnswer == actualAnswer){
+            if(questionNumber + 1 < questions.count){
+                questionNumber += 1
+            } else {
+                questionNumber = 0
+            }
+            updateUi()
         }
+        
     }
     
     func updateUi(){
